@@ -34,3 +34,4 @@ jobs:
         job_name: Test Report
         report_paths: 'report.xml'
         include_passed: true
+        detailed_summary: true
