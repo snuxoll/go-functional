@@ -1,6 +1,7 @@
 package functional
 
 import (
+	"fmt"
 	"maps"
 	"slices"
 	"testing"
@@ -43,6 +44,22 @@ func TestSeq_Filter2(t *testing.T) {
 	}
 
 	if !maps.Equal(expected, result) {
+		t.Errorf("Expected %v, got %v", expected, result)
+	}
+}
+
+func TestMap(t *testing.T) {
+	input := []int{1, 2, 3, 4, 5}
+
+	seq := OfSeq(slices.Values(input))
+
+	result := Map(seq, func(i int) string {
+		return fmt.Sprintf("%d", i)
+	}).Collect()
+
+	expected := []string{"1", "2", "3", "4", "5"}
+
+	if !slices.Equal(expected, result) {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
 }
