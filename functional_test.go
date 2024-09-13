@@ -46,6 +46,10 @@ func TestSeq_Filter2(t *testing.T) {
 	if !maps.Equal(expected, result) {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
+
+	s2 := seq.AsSeq()
+	a := OfPairSeq(s2)
+	_ = s2
 }
 
 func TestMap(t *testing.T) {
@@ -62,4 +66,5 @@ func TestMap(t *testing.T) {
 	if !slices.Equal(expected, result) {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
+
 }

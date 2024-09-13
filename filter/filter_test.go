@@ -8,7 +8,7 @@ import (
 func TestFilter(t *testing.T) {
 	input := []int{1, 2, 3, 4, 5}
 
-	result := slices.Collect(Filter(slices.Values(input), func(i int) bool {
+	result := slices.Collect(Seq(slices.Values(input), func(i int) bool {
 		return i > 3
 	}))
 
