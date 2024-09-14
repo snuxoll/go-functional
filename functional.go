@@ -8,6 +8,16 @@ import (
 	"slices"
 )
 
+// AsFilter converts a function conforming to the [FilterFunc] signature to a [FilterFunc] type.
+func AsFilter[T any](f funcs.FilterFunc[T]) funcs.FilterFunc[T] {
+	return f
+}
+
+// AsFilterPair converts a function conforming to the [FilterPairFunc] signature to a [FilterPairFunc] type.
+func AsFilterPair[K any, V any](f funcs.FilterPairFunc[K, V]) funcs.FilterPairFunc[K, V] {
+	return f
+}
+
 /*
 Pair is a simple interface for key-value pairs. It is used to represent key-value pairs in a way that can be used with
 functions expecting the [Seq] type.
