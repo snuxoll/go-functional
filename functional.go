@@ -134,3 +134,18 @@ func Map[I any, O any](in Seq[I], fn funcs.MapFunc[I, O]) Seq[O] {
 		}
 	}
 }
+
+// Concat concatenates the provided sequences into a single sequence. This function does return elements in order,
+// starting with the first element of the first sequence and ending with the last element of the last sequence. This
+// does not guarantee that the underlying sequences give a predictable order.
+func Concat[T any](seqs ...Seq[T]) Seq[T] {
+	return func(yield func(T) bool) {
+		for _, seq := range seqs {
+			for val := range seq {
+				if !yield(val) {
+					return
+				}
+			}
+		}
+	}
+}
